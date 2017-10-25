@@ -17,10 +17,11 @@ window.onload = function () {
 
         // We're creating a DOM element for the number
         var elem = document.getElementsByClassName('meowpic')[i];
+        var catName = elem.innerText;
         //elem.textContent = num;
 
         // ... and when we click, alert the value of `num`
-        elem.addEventListener('click', (function (numCopy) {
+        elem.addEventListener('click', (function (numCopy, nameCopy) {
             return function () {
                 //resetting values
                 count = 0;
@@ -31,7 +32,7 @@ window.onload = function () {
                 
                 var catContainer = document.getElementById('mysterycat');
                 var catHeader = document.getElementById('catName');
-                catHeader.innerHTML = elem.innerText;
+                catHeader.innerHTML = nameCopy;
                 var newCat = document.createElement('img');
                 newCat.src = numCopy;
                 newCat.onclick = function(){
@@ -48,7 +49,7 @@ window.onload = function () {
                 ;
                 catContainer.appendChild(newCat);
             };
-        })(num));
+        })(num,catName));
 
 
     }
